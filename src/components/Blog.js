@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import Post from './Post'; 
 import List from './List';
+import PostContainer from './PostContainer';
+import {NEW, EDIT, EXISTING} from './constants/PostState';
 
 class Blog extends Component{
     constructor(props){
@@ -12,6 +13,7 @@ class Blog extends Component{
                       {id:1, title: 'Cats post', text:'Cats are nice'},
                     ],
             currentPost: 0,
+            postState: EXISTING,
         }
 
         
@@ -19,10 +21,15 @@ class Blog extends Component{
     selectPost = (id) => {
         this.setState({currentPost: id});        
     }
+    createNewPost = () =>{
+        console.log('create new post');
+        this.setState( {postState:EDIT});
+    }
     render(){
         return(
             <div>
-                <Post post={this.state.posts[this.state.currentPost]} />
+               <PostContainer {...this.state} onNewPost = {this.createNewPost}/>
+                
                 <List 
                     posts={this.state.posts} 
                     currentPost={this.state.currentPost}

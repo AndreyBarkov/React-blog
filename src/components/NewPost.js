@@ -9,4 +9,4 @@ const NewPost = (props) => {
         
     );
 }
-export default Post;
+export default NewPost;

@@ -10,17 +10,12 @@ export default function configureStore() {
   const initialState = {
 
     posts: [{
-        id: 2,
-        title: 'Dogs post',
-        text: 'Dogs are awesome'
-      },
-      {
-        id: 3,
-        title: 'Cats post',
-        text: 'Cats are nice'
+        id: 0,
+        title: 'Welcome to your Blog',
+        text: 'This is a React-powered blog'
       },
     ],
-    currentPost: 2,
+    currentPost: 0,
     postState: EXISTING_POST,
   }
 

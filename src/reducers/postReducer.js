@@ -40,7 +40,7 @@ function postReducer(state = {}, action) {
 
 function addNewPost(state, {post}) {
     let updatedPosts = state.posts;
-    post.id = state.posts.length;
+    post.id = updatedPosts[state.posts.length-1].id+1;
     updatedPosts.push(post);
     return Object.assign({}, state, {
         posts: updatedPosts,

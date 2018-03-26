@@ -8,7 +8,7 @@ const Post = (props) => {
     return(
         <div className="post">
             <h1>{props.post.title}</h1>
-            <p>{props.post.text}</p>
+            <div dangerouslySetInnerHTML={{ __html: props.post.text }} />
             <button onClick={() => props.editPost()}>Edit Post</button>
             <button onClick={() => props.newPost()}>New Post</button>
             <button onClick={() => props.deletePost(props.post.id)}>Delete Post</button>

@@ -8,11 +8,11 @@ const PostContainer = (props) => {
         case NEW:
             return <NewPost />;
         case EXISTING:
-            return <Post post={props.posts[props.currentPost]} onNewPost={props.onNewPost} />
+            return <Post post={props.posts[props.currentPost]} onEditPost={props.onEditPost} />
         case EDIT:
             return <NewPost post={props.posts[props.currentPost]} />;
         default:
-            return <Post post={props.posts[props.currentPost]} onNewPost={props.onNewPost} />
+            return <Post post={props.posts[props.currentPost]} onEditPost={props.onEditPost} />
     }
 
 }

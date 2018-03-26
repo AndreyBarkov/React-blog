@@ -19,22 +19,31 @@ class Blog extends Component{
         
     }
     selectPost = (id) => {
-        this.setState({currentPost: id});        
+        this.setState({
+            currentPost: id,
+            postState: EXISTING,
+        });        
     }
     createNewPost = () =>{
+        console.log('create new post');
+        this.setState( {postState:NEW});
+    }
+    editPost = () =>{
         console.log('create new post');
         this.setState( {postState:EDIT});
     }
     render(){
         return(
             <div>
-               <PostContainer {...this.state} onNewPost = {this.createNewPost}/>
+               <PostContainer {...this.state} onEditPost = {this.editPost}/>
                 
                 <List 
                     posts={this.state.posts} 
                     currentPost={this.state.currentPost}
                     OnClick={this.selectPost} 
+                    onNewPost = {this.createNewPost}
                 />
+                
             </div>
             
         );

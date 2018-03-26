@@ -13,7 +13,7 @@ const List = (props) => {
             <ul>
                {list}
             </ul>
-
+        <button onClick={() => props.onNewPost()}>Add New Post</button>
         </div>
     );
 }

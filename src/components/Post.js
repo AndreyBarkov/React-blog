@@ -6,7 +6,7 @@ const Post = (props) => {
         <div className="post">
             <h1>{props.post.title}</h1>
             <p>{props.post.text}</p>
-            <button onClick={() => props.onNewPost()}>Add New Post</button>
+            <button onClick={() => props.onEditPost()}>Edit Post</button>
         </div>
         
     );

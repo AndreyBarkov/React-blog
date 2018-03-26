@@ -14,21 +14,14 @@ class Blog extends Component{
        
     }
     selectPost = (id) => {
-       /* this.setState({
-            currentPost: id,
-            postState: actionTypes.EXISTING_POST,
-        });        
-        selectPost(id);*/
-        this.props.postActions.selectPost(id);
+         this.props.postActions.selectPost(id);
 
     }
     createNewPost = () =>{
-        console.log('create new post');
-        this.setState( {postState:actionTypes.NEW_POST});
+        this.props.postActions.newPost();
     }
     editPost = () =>{
-      //  console.log('create new post');
-        this.setState( {postState:actionTypes.EDIT_POST});
+        this.props.postActions.editPost();
     }
     render(){
         return(
@@ -50,7 +43,8 @@ class Blog extends Component{
 function mapStateToProps(state){
     return {
         posts: state.posts,
-        currentPost: state.currentPost
+        currentPost: state.currentPost,
+        postState: state.postState
     }
 }
 function mapDispatchToProps(dispatch){

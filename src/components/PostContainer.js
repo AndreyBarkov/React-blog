@@ -1,15 +1,15 @@
 import React from 'react';
 import Post from './Post';
 import NewPost from './NewPost';
-import {NEW, EDIT, EXISTING} from './constants/PostState';
+import {NEW_POST, EDIT_POST, EXISTING_POST} from '../actions/actionTypes';
 
 const PostContainer = (props) => {
     switch(props.postState){
-        case NEW:
+        case NEW_POST:
             return <NewPost />;
-        case EXISTING:
+        case EXISTING_POST:
             return <Post post={props.posts[props.currentPost]} onEditPost={props.onEditPost} />
-        case EDIT:
+        case EDIT_POST:
             return <NewPost post={props.posts[props.currentPost]} />;
         default:
             return <Post post={props.posts[props.currentPost]} onEditPost={props.onEditPost} />

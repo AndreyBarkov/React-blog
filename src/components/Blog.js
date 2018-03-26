@@ -1,46 +1,44 @@
 import React, { Component } from 'react';
 import List from './List';
 import PostContainer from './PostContainer';
-import {NEW, EDIT, EXISTING} from './constants/PostState';
+import * as actionTypes from '../actions/actionTypes';
+import * as postActions from '../actions/actions';
+import {dispatch, connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import { selectPost } from '../actions/actions';
+console.log(postActions);
 
 class Blog extends Component{
     constructor(props){
         super(props);
-
-        this.state = 
-        {
-             posts : [{id:0, title: 'Dogs post', text:'Dogs are awesome'},
-                      {id:1, title: 'Cats post', text:'Cats are nice'},
-                    ],
-            currentPost: 0,
-            postState: EXISTING,
-        }
-
-        
+       
     }
     selectPost = (id) => {
-        this.setState({
+       /* this.setState({
             currentPost: id,
-            postState: EXISTING,
+            postState: actionTypes.EXISTING_POST,
         });        
+        selectPost(id);*/
+        this.props.postActions.selectPost(id);
+
     }
     createNewPost = () =>{
         console.log('create new post');
-        this.setState( {postState:NEW});
+        this.setState( {postState:actionTypes.NEW_POST});
     }
     editPost = () =>{
-        console.log('create new post');
-        this.setState( {postState:EDIT});
+      //  console.log('create new post');
+        this.setState( {postState:actionTypes.EDIT_POST});
     }
     render(){
         return(
             <div>
-               <PostContainer {...this.state} onEditPost = {this.editPost}/>
+               <PostContainer {...this.props} onEditPost = {this.editPost}/>
                 
                 <List 
-                    posts={this.state.posts} 
-                    currentPost={this.state.currentPost}
-                    OnClick={this.selectPost} 
+                    posts={this.props.posts} 
+                    currentPost={this.props.currentPost}
+                    OnClick = {this.selectPost}
                     onNewPost = {this.createNewPost}
                 />
                 
@@ -49,4 +47,15 @@ class Blog extends Component{
         );
     }
 }
-export default Blog;
+function mapStateToProps(state){
+    return {
+        posts: state.posts,
+        currentPost: state.currentPost
+    }
+}
+function mapDispatchToProps(dispatch){
+    return {
+        postActions: bindActionCreators(postActions, dispatch)
+    }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(Blog);

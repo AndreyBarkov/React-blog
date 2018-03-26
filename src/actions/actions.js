@@ -30,6 +30,12 @@ export function removePost(id) {
 export function updatePost(post) {
     return {
         type: types.UPDATE_POST,
-        post
+        post,
+    }
+}
+export function selectPost(id) {
+    return {
+        type: types.SELECT_POST,
+        id,
     }
 }

@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import List from './List';
 import PostContainer from './PostContainer';
-import * as actionTypes from '../actions/actionTypes';
 import * as postActions from '../actions/actions';
-import {dispatch, connect} from 'react-redux';
+import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import { selectPost } from '../actions/actions';
 console.log(postActions);
 
 class Blog extends Component{
@@ -29,10 +27,9 @@ class Blog extends Component{
                <PostContainer {...this.props} onEditPost = {this.editPost}/>
                 
                 <List 
-                   
-                    
+                    posts = {this.props.posts}
+                    currentPost = {this.props.currentPost}
                     OnClick = {this.selectPost}
-                    onNewPost = {this.createNewPost}
                 />
                 
             </div>

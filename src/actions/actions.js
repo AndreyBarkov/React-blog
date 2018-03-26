@@ -21,9 +21,9 @@ export function addPost(post) {
         post,
     }
 }
-export function removePost(id) {
+export function deletePost(id) {
     return {
-        type: types.REMOVE_POST,
+        type: types.DELETE_POST,
         id,
     }
 }

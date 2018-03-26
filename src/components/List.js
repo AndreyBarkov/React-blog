@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {connect} from 'react-redux';
 
 const List = (props) => {
     const list =  props.posts.map((post) => 
@@ -17,4 +17,10 @@ const List = (props) => {
         </div>
     );
 }
-export default List;
+function mapStateToProps(state){
+    return {
+        posts: state.posts,
+        currentPost: state.currentPost,
+    }
+}
+export default connect(mapStateToProps, null)(List);

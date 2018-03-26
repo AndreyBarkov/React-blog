@@ -29,8 +29,8 @@ class Blog extends Component{
                <PostContainer {...this.props} onEditPost = {this.editPost}/>
                 
                 <List 
-                    posts={this.props.posts} 
-                    currentPost={this.props.currentPost}
+                   
+                    
                     OnClick = {this.selectPost}
                     onNewPost = {this.createNewPost}
                 />

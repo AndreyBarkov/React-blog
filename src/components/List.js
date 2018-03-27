@@ -1,5 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+
 
 const List = (props) => {
      
@@ -17,6 +19,15 @@ const List = (props) => {
 
         </div>
     );
+}
+List.propTypes = {
+    currentPost:PropTypes.number.isRequired,
+    OnClick:PropTypes.func.isRequired,
+    posts:PropTypes.arrayOf(PropTypes.shape({
+        id:PropTypes.number,
+        title:PropTypes.string,
+        text:PropTypes.string,
+    })).isRequired,
 }
 
 export default List;

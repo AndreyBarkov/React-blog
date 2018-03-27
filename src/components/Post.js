@@ -4,15 +4,24 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 const Post = props => {
-  //  const post = props.posts[props.currentPost.id];
   if (props.post)
     return (
       <div className="post">
-        <h2>{props.post.title}</h2>
-        <div dangerouslySetInnerHTML={{ __html: props.post.text }} />
-        <button onClick={() => props.editPost()}>Edit Post</button>
-        <button onClick={() => props.newPost()}>New Post</button>
-        <button onClick={() => props.deletePost(props.post.id)}>
+        <h2 className="post-title">{props.post.title}</h2>
+        <div
+          className="post-text"
+          dangerouslySetInnerHTML={{ __html: props.post.text }}
+        />
+        <button className="edit-post" onClick={() => props.editPost()}>
+          Edit Post
+        </button>
+        <button className="new-post" onClick={() => props.newPost()}>
+          New Post
+        </button>
+        <button
+          className="delete-post"
+          onClick={() => props.deletePost(props.post.id)}
+        >
           Delete Post
         </button>
       </div>
@@ -37,12 +46,6 @@ Post.propTypes = {
     text: PropTypes.string
   })
 };
-function mapStateToProps(state) {
-  return {
-    posts: state.posts,
-    currentPost: state.currentPost
-  };
-}
 function mapDispatchToProps(dispatch) {
   return {
     editPost: newPost => dispatch(editPost()),
@@ -50,4 +53,4 @@ function mapDispatchToProps(dispatch) {
     deletePost: id => dispatch(deletePost(id))
   };
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Post);
+export default connect(null, mapDispatchToProps)(Post);

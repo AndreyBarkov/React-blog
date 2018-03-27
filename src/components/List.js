@@ -13,8 +13,7 @@ const List = props => {
         className={post.id === props.currentPost ? "selected" : ""}
         onClick={() => props.OnClick(post.id)}
       >
-        {" "}
-        {post.title}{" "}
+        {post.title}
       </li>
     ));
   }
@@ -27,7 +26,7 @@ const List = props => {
 };
 List.propTypes = {
   currentPost: PropTypes.number.isRequired,
-  OnClick: PropTypes.func.isRequired,
+  OnClick: PropTypes.func,
   posts: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number,

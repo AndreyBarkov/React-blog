@@ -1,6 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {addPost, updatePost} from '../actions/actions';
+import PropTypes from 'prop-types';
+
 
 const NewPost = (props) => {
     if(props.post === undefined){
@@ -31,6 +33,13 @@ const NewPost = (props) => {
             
         );
     }
+}
+NewPost.propTypes = {
+    post:PropTypes.shape({
+          id: PropTypes.number,
+          title: PropTypes.string,
+          text: PropTypes.string
+        })
 }
 function mapDispatchToProps(dispatch){
     return{

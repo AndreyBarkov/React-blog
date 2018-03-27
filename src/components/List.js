@@ -5,7 +5,7 @@ const List = props => {
   let list;
   if (props.posts.length < 1) {
     console.log("no posts");
-    list = () => <li>There are no posts yet</li>;
+    list = <li>There are no posts yet</li>;
   } else {
     list = props.posts.map((post, index) => (
       <li

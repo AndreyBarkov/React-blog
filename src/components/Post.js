@@ -21,7 +21,6 @@ const Post = props => {
     return (
       <div className="post">
         <h2>
-          {" "}
           There are no post in your blog yet. Would you like to create one?
         </h2>
         <button onClick={() => props.newPost()}>New Post</button>

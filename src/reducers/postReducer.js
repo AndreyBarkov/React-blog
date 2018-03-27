@@ -40,7 +40,7 @@ function postReducer(state = {}, action) {
 
 function addNewPost(state, { post }) {
   let updatedPosts = state.posts;
-  post.id = updatedPosts[state.posts.length - 1].id + 1;
+  post.id = updatedPosts.length > 0 ? updatedPosts[state.posts.length - 1].id + 1 : 0;
   updatedPosts.push(post);
   return Object.assign({}, state, {
     posts: updatedPosts,
@@ -51,9 +51,7 @@ function addNewPost(state, { post }) {
 
 function updatePost(state, action) {
   let updatedPosts = state.posts;
-  //  updatedPosts[action.post.id] = action.post;
   let postIndex = updatedPosts.findIndex(item => item.id === action.post.id);
-  console.log(postIndex);
   updatedPosts.splice(postIndex, 1, action.post);
   return Object.assign({}, state, {
     posts: updatedPosts,
@@ -61,7 +59,6 @@ function updatePost(state, action) {
   });
 }
 function deletePost(state, action) {
-  //TODO: Add check if no posts left
 
   let updatedPosts = state.posts;
 
@@ -69,12 +66,11 @@ function deletePost(state, action) {
 
   updatedPosts.splice(postToDelete, 1);
 
-  console.log(postToDelete);
-  console.log(updatedPosts);
+  const newCurrentPost = updatedPosts.length > 0 ? updatedPosts[0].id : -1;
 
   return Object.assign({}, state, {
     posts: updatedPosts,
-    currentPost: updatedPosts[0].id,
+    currentPost: newCurrentPost,
     postState: EXISTING_POST
   });
 }

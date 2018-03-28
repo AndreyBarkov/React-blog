@@ -4,6 +4,13 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 const Post = props => {
+  const deletePostWithConfirmation = id => {
+    if (window.confirm("Are you sure to delete this post?")) {
+      props.deletePost(id);
+    } else {
+      return;
+    }
+  };
   if (props.post)
     return (
       <div className="post">
@@ -20,7 +27,7 @@ const Post = props => {
         </button>
         <button
           className="delete-post"
-          onClick={() => props.deletePost(props.post.id)}
+          onClick={() => deletePostWithConfirmation(props.post.id)}
         >
           Delete Post
         </button>

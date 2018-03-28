@@ -20,6 +20,7 @@ const Post = props => {
           dangerouslySetInnerHTML={{ __html: props.post.text }}
         />
         <div className="post-bottom">
+        <div className="date-posted">Posted on: {props.post.datePosted}</div>
         <div className="button edit-post" onClick={() => props.editPost()}>
           EDIT
         </div>

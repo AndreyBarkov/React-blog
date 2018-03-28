@@ -41,6 +41,7 @@ function postReducer(state = {}, action) {
 function addNewPost(state, { post }) {
   let updatedPosts = state.posts;
   post.id = updatedPosts.length > 0 ? updatedPosts[state.posts.length - 1].id + 1 : 0;
+  post.datePosted = new Date().toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', date:'numeric', month:'short', year:'numeric', hour12: true });
   updatedPosts.unshift(post);
   return Object.assign({}, state, {
     posts: updatedPosts,

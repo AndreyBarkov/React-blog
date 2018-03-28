@@ -3,6 +3,7 @@ import { editPost, newPost, deletePost } from "../actions/actions";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
+
 const Post = props => {
   const deletePostWithConfirmation = id => {
     if (window.confirm("Are you sure to delete this post?")) {
@@ -11,7 +12,6 @@ const Post = props => {
       return;
     }
   };
-  if (props.post)
     return (
       <div className="post">
         <h2 className="post-title">{props.post.title}</h2>
@@ -20,27 +20,17 @@ const Post = props => {
           dangerouslySetInnerHTML={{ __html: props.post.text }}
         />
         <div className="post-bottom">
-        <div className="date-posted">Posted on: {props.post.datePosted}</div>
-        <div className="button edit-post" onClick={() => props.editPost()}>
+        <div  className="date-posted">Posted on: {props.post.datePosted}</div>
+        <div disabled={props.post.id !== -1} className="button edit-post" onClick={() => props.editPost()}>
           EDIT
         </div>
         <div
+          disabled={props.post.id !== -1}
           className="button delete-post"
           onClick={() => deletePostWithConfirmation(props.post.id)}
         >
           DELETE
         </div>
-        </div>
-      </div>
-    );
-  else
-    return (
-      <div className="post">
-        <h2 className="post-title">
-          There are no post in your blog yet. Would you like to create one?
-        </h2>
-        <div className="post-bottom">
-          <div className="button" onClick={() => props.newPost()}>CREATE POST</div>
         </div>
       </div>
     );
@@ -52,9 +42,17 @@ Post.propTypes = {
   post: PropTypes.shape({
     id: PropTypes.number,
     title: PropTypes.string,
-    text: PropTypes.string
+    text: PropTypes.string,
   })
 };
+Post.defaultProps = {
+  post:{
+    id:-1,
+    title:'Ooops!!!',
+    text:'There are no post in your blog yet. Would you like to create one?',
+    datePosted:'Today'
+  }
+}
 function mapDispatchToProps(dispatch) {
   return {
     editPost: newPost => dispatch(editPost()),

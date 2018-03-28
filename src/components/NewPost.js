@@ -20,16 +20,22 @@ const NewPost = props => {
           }}
         />
         <br />
-        <textarea 
-            rows="20" 
-            cols="20"
-            className="input-text"
+        <div className="input-text">
+          <textarea
+            rows="20"
+            cols="80"
             placeholder="Post..."
             ref={input => {
-              this.text = input;}}
-         />
-        <br/>
-        <button onClick={() => addNewPost()}>Save</button>
+              this.text = input;
+            }}
+          />
+        </div>
+        <br />
+        <div className="post-bottom">
+          <div className="button" onClick={() => addNewPost()}>
+            Save
+          </div>
+        </div>
       </div>
     );
   } else {
@@ -37,7 +43,8 @@ const NewPost = props => {
       let updPost = {
         id: props.post.id,
         title: this.title.value,
-        text: this.text.value
+        text: this.text.value,
+        datePosted: props.post.datePosted,
       };
       props.updatePost(updPost);
     };
@@ -52,20 +59,24 @@ const NewPost = props => {
             this.title = input;
           }}
         />
-        <br/>
+        <br />
         <div className="input-text">
-        <textarea
-          rows="20" 
-          cols="85"
-          placeholder="Post..."
-          defaultValue={props.post.text}
-          ref={input => {
-            this.text = input;
-          }}
-        />
+          <textarea
+            rows="20"
+            cols="85"
+            placeholder="Post..."
+            defaultValue={props.post.text}
+            ref={input => {
+              this.text = input;
+            }}
+          />
         </div>
-        <br/>
-        <button onClick={() => updatePost()}>Save</button>
+        <br />
+        <div className="post-bottom">
+          <div className="button" onClick={() => updatePost()}>
+            Save
+          </div>
+        </div>
       </div>
     );
   }

@@ -12,19 +12,23 @@ const NewPost = props => {
     return (
       <div className="post">
         <input
+          className="input-title"
           type="text"
           placeholder="Title"
           ref={input => {
             this.title = input;
           }}
         />
-        <input
-          type="text"
-          placeholder="Post..."
-          ref={input => {
-            this.text = input;
-          }}
-        />
+        <br />
+        <textarea 
+            rows="20" 
+            cols="80"
+            className="input-text"
+            placeholder="Post..."
+            ref={input => {
+              this.text = input;}}
+         />
+        <br/>
         <button onClick={() => addNewPost()}>Save</button>
       </div>
     );
@@ -40,6 +44,7 @@ const NewPost = props => {
     return (
       <div className="post">
         <input
+          className="input-title"
           type="text"
           placeholder="Title1"
           defaultValue={props.post.title}
@@ -47,14 +52,18 @@ const NewPost = props => {
             this.title = input;
           }}
         />
-        <input
-          type="text"
+        <br/>
+        <textarea
+          rows="20" 
+          cols="80"
+          className="input-text"
           placeholder="Post..."
           defaultValue={props.post.text}
           ref={input => {
             this.text = input;
           }}
         />
+        <br/>
         <button onClick={() => updatePost()}>Save</button>
       </div>
     );

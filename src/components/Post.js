@@ -19,18 +19,20 @@ const Post = props => {
           className="post-text"
           dangerouslySetInnerHTML={{ __html: props.post.text }}
         />
-        <button className="edit-post" onClick={() => props.editPost()}>
-          Edit Post
-        </button>
-        <button className="new-post" onClick={() => props.newPost()}>
-          New Post
-        </button>
-        <button
-          className="delete-post"
+        <div className="post-bottom">
+        <div className="button edit-post" onClick={() => props.editPost()}>
+          EDIT
+        </div>
+        <div className="button new-post" onClick={() => props.newPost()}>
+          NEW
+        </div>
+        <div
+          className="button delete-post"
           onClick={() => deletePostWithConfirmation(props.post.id)}
         >
-          Delete Post
-        </button>
+          DELETE
+        </div>
+        </div>
       </div>
     );
   else

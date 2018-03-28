@@ -22,7 +22,7 @@ const NewPost = props => {
         <br />
         <textarea 
             rows="20" 
-            cols="80"
+            cols="20"
             className="input-text"
             placeholder="Post..."
             ref={input => {
@@ -53,16 +53,17 @@ const NewPost = props => {
           }}
         />
         <br/>
+        <div className="input-text">
         <textarea
           rows="20" 
-          cols="80"
-          className="input-text"
+          cols="85"
           placeholder="Post..."
           defaultValue={props.post.text}
           ref={input => {
             this.text = input;
           }}
         />
+        </div>
         <br/>
         <button onClick={() => updatePost()}>Save</button>
       </div>

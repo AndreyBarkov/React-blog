@@ -4,82 +4,43 @@ import { addPost, updatePost } from "../actions/actions";
 import PropTypes from "prop-types";
 
 const NewPost = props => {
-  if (props.post === undefined) {
-    const addNewPost = () => {
+     const addNewPost = e => {
+      e.preventDefault;
       let newPost = { title: this.title.value, text: this.text.value };
       props.addPost(newPost);
     };
     return (
       <div className="post">
-        <input
-          className="input-title"
-          type="text"
-          placeholder="Title"
-          ref={input => {
-            this.title = input;
-          }}
-        />
-        <br />
-        <div className="input-text">
-          <textarea
-            rows="20"
-            cols="80"
-            placeholder="Post..."
+        <form id="newPost" onSubmit={addNewPost}>
+          <input
+            className="input-title"
+            type="text"
+            required
+            placeholder="Title"
             ref={input => {
-              this.text = input;
+              this.title = input;
             }}
           />
-        </div>
-        <br />
-        <div className="post-bottom">
-          <div className="button" onClick={() => addNewPost()}>
-            Save
+          <br />
+          <div className="input-text">
+            <textarea
+              required
+              rows="20"
+              cols="80"
+              placeholder="Post..."
+              ref={input => {
+                this.text = input;
+              }}
+            />
           </div>
-        </div>
+          <br />
+          <div className="post-bottom">
+            <input className="button submit" type="submit" value="SAVE" />
+          </div>
+        </form>
       </div>
     );
-  } else {
-    const updatePost = () => {
-      let updPost = {
-        id: props.post.id,
-        title: this.title.value,
-        text: this.text.value,
-        datePosted: props.post.datePosted,
-      };
-      props.updatePost(updPost);
-    };
-    return (
-      <div className="post">
-        <input
-          className="input-title"
-          type="text"
-          placeholder="Title1"
-          defaultValue={props.post.title}
-          ref={input => {
-            this.title = input;
-          }}
-        />
-        <br />
-        <div className="input-text">
-          <textarea
-            rows="20"
-            cols="85"
-            placeholder="Post..."
-            defaultValue={props.post.text}
-            ref={input => {
-              this.text = input;
-            }}
-          />
-        </div>
-        <br />
-        <div className="post-bottom">
-          <div className="button" onClick={() => updatePost()}>
-            Save
-          </div>
-        </div>
-      </div>
-    );
-  }
+  
 };
 NewPost.propTypes = {
   post: PropTypes.shape({
@@ -91,7 +52,6 @@ NewPost.propTypes = {
 function mapDispatchToProps(dispatch) {
   return {
     addPost: newPost => dispatch(addPost(newPost)),
-    updatePost: post => dispatch(updatePost(post))
   };
 }
 

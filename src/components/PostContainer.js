@@ -1,7 +1,8 @@
-import React from "react";
-import Post from "./Post";
-import NewPost from "./NewPost";
-import { NEW_POST, EDIT_POST, EXISTING_POST } from "../actions/actionTypes";
+import React from 'react';
+import Post from './Post';
+import NewPost from './NewPost';
+import UpdatePost from './UpdatePost';
+import { NEW_POST, EDIT_POST, EXISTING_POST } from '../actions/actionTypes';
 
 const PostContainer = props => {
   switch (props.postState) {
@@ -16,9 +17,8 @@ const PostContainer = props => {
       );
     case EDIT_POST:
       return (
-        <NewPost
+        <UpdatePost
           post={props.posts.find(item => item.id === props.currentPost)}
-          test={"test"}
         />
       );
     default:

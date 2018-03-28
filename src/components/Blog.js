@@ -4,7 +4,7 @@ import PostContainer from "./PostContainer";
 import * as postActions from "../actions/actions";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-console.log(postActions);
+import logo from "../assets/logo-og.png";
 
 class Blog extends Component {
   constructor(props) {
@@ -22,6 +22,16 @@ class Blog extends Component {
   render() {
     return (
       <div>
+        <div className="blog-header">
+          <img src={logo} />
+          <div
+            className="button create-post"
+            onClick={() => this.props.postActions.newPost()}
+          >
+            CREATE POST
+          </div>
+        </div>
+
         <PostContainer {...this.props} onEditPost={this.editPost} />
 
         <List

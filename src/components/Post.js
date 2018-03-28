@@ -24,9 +24,6 @@ const Post = props => {
         <div className="button edit-post" onClick={() => props.editPost()}>
           EDIT
         </div>
-        <div className="button new-post" onClick={() => props.newPost()}>
-          NEW
-        </div>
         <div
           className="button delete-post"
           onClick={() => deletePostWithConfirmation(props.post.id)}
@@ -39,10 +36,12 @@ const Post = props => {
   else
     return (
       <div className="post">
-        <h2>
+        <h2 className="post-title">
           There are no post in your blog yet. Would you like to create one?
         </h2>
-        <button onClick={() => props.newPost()}>New Post</button>
+        <div className="post-bottom">
+          <div className="button" onClick={() => props.newPost()}>CREATE POST</div>
+        </div>
       </div>
     );
 };
@@ -64,3 +63,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 export default connect(null, mapDispatchToProps)(Post);
+

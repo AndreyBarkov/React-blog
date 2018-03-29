@@ -5,9 +5,10 @@ export function newPost() {
     type: types.NEW_POST
   };
 }
-export function editPost() {
+export function editPost(id) {
   return {
-    type: types.EDIT_POST
+    type: types.EDIT_POST,
+    id
   };
 }
 export function existingPost() {

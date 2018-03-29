@@ -1,11 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
-import { addPost, updatePost } from "../actions/actions";
+import { addPost} from "../actions/actions";
 import PropTypes from "prop-types";
 
 const NewPost = props => {
-     const addNewPost = e => {
-      e.preventDefault;
+     const addNewPost = (e) => {
       let newPost = { title: this.title.value, text: this.text.value };
       props.addPost(newPost);
     };

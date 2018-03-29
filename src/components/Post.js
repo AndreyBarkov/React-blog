@@ -13,7 +13,7 @@ const Post = props => {
     }
   };
     return (
-      <div className="post">
+      <div id={props.post.id} className="post">
         <h2 className="post-title">{props.post.title}</h2>
         <div
           className="post-text"
@@ -21,11 +21,11 @@ const Post = props => {
         />
         <div className="post-bottom">
         <div  className="date-posted">Posted on: {props.post.datePosted}</div>
-        <div disabled={props.post.id !== -1} className="button edit-post" onClick={() => props.editPost()}>
+        <div  className="button edit-post" onClick={() => props.editPost(props.post.id)}>
           EDIT
         </div>
         <div
-          disabled={props.post.id !== -1}
+          
           className="button delete-post"
           onClick={() => deletePostWithConfirmation(props.post.id)}
         >
@@ -55,7 +55,7 @@ Post.defaultProps = {
 }
 function mapDispatchToProps(dispatch) {
   return {
-    editPost: newPost => dispatch(editPost()),
+    editPost: id => dispatch(editPost(id)),
     newPost: () => dispatch(newPost()),
     deletePost: id => dispatch(deletePost(id))
   };

@@ -7,14 +7,13 @@ const List = props => {
     console.log("no posts");
     list = <li>There are no posts yet</li>;
   } else {
-    list = props.posts.map((post, index) => (
-      <li
+    list = props.posts.map((post) => (
+      <a href={'#'+post.id}><li
         key={post.id}
-        className={post.id === props.currentPost ? "selected" : ""}
         onClick={() => props.OnClick(post.id)}
       >
         {post.title}
-      </li>
+      </li></a>
     ));
   }
   return (
@@ -25,7 +24,7 @@ const List = props => {
   );
 };
 List.propTypes = {
-  currentPost: PropTypes.number.isRequired,
+ 
   OnClick: PropTypes.func,
   posts: PropTypes.arrayOf(
     PropTypes.shape({

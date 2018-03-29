@@ -21,10 +21,10 @@ enzyme.configure({ adapter: new Adapter() });
 describe('List component', () => {
 
     it('should render without throwing and error when no posts', () => {
-        expect(enzyme.shallow(<List currentPost={-1} posts={[]} />).exists(<div className="post-list"></div>)).toBe(true)
+        expect(enzyme.shallow(<List posts={[]} />).exists(<div className="post-list"></div>)).toBe(true)
     })
     it('should render post array properly', ()=>{
-        const wrapper = enzyme.shallow(<List currentPost={0} posts={testPosts} />);
+        const wrapper = enzyme.shallow(<List  posts={testPosts} />);
         expect(wrapper.find('li')).toHaveLength(testPosts.length);
         
     })

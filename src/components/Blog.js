@@ -7,10 +7,7 @@ import { bindActionCreators } from "redux";
 import logo from "../assets/logo-og.png";
 
 class Blog extends Component {
-  constructor(props) {
-    super(props);
-  }
-  selectPost = id => {
+   selectPost = id => {
     this.props.postActions.selectPost(id);
   };
   createNewPost = () => {
@@ -23,7 +20,7 @@ class Blog extends Component {
     return (
       <div>
         <div className="blog-header">
-          <img src={logo} />
+          <img alt="logo" src={logo} />
           <div
             className="button create-post"
             onClick={() => this.props.postActions.newPost()}
@@ -36,7 +33,6 @@ class Blog extends Component {
 
         <List
           posts={this.props.posts}
-          currentPost={this.props.currentPost}
           OnClick={this.selectPost}
         />
       </div>
@@ -46,8 +42,8 @@ class Blog extends Component {
 function mapStateToProps(state) {
   return {
     posts: state.posts,
-    currentPost: state.currentPost,
-    postState: state.postState
+    postState: state.postState,
+    numberOfPosts: state.numberOfPosts,
   };
 }
 function mapDispatchToProps(dispatch) {

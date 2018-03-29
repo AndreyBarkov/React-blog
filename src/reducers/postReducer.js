@@ -7,6 +7,7 @@ import {
   UPDATE_POST,
   DELETE_POST
 } from "../actions/actionTypes";
+import UpdatePost from "../components/UpdatePost";
 
 function postReducer(state = {}, action) {
   switch (action.type) {
@@ -16,7 +17,8 @@ function postReducer(state = {}, action) {
       });
     case EDIT_POST:
       return Object.assign({}, state, {
-        postState: EDIT_POST
+        postState: EDIT_POST,
+        currentPost:action.id
       });
     case EXISTING_POST:
       return Object.assign({}, state, {
@@ -45,8 +47,8 @@ function addNewPost(state, { post }) {
   updatedPosts.unshift(post);
   return Object.assign({}, state, {
     posts: updatedPosts,
-    currentPost: post.id,
-    postState: EXISTING_POST
+    postState: EXISTING_POST,
+    numberOfPosts:state.numberOfPosts+1,
   });
 }
 
@@ -66,13 +68,9 @@ function deletePost(state, action) {
   let postToDelete = updatedPosts.findIndex(post => post.id === action.id);
 
   updatedPosts.splice(postToDelete, 1);
+  console.log("DELETED");
+  console.log(updatedPosts);
+  return {...state, posts:updatedPosts, numberOfPosts:state.numberOfPosts-1}
 
-  const newCurrentPost = updatedPosts.length > 0 ? updatedPosts[0].id : -1;
-
-  return Object.assign({}, state, {
-    posts: updatedPosts,
-    currentPost: newCurrentPost,
-    postState: EXISTING_POST
-  });
 }
 export default postReducer;

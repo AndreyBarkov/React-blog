@@ -1,5 +1,6 @@
 import React from 'react';
 import Post from './Post';
+import Feed from './Feed';
 import NewPost from './NewPost';
 import UpdatePost from './UpdatePost';
 import { NEW_POST, EDIT_POST, EXISTING_POST } from '../actions/actionTypes';
@@ -10,10 +11,7 @@ const PostContainer = props => {
       return <NewPost />;
     case EXISTING_POST:
       return (
-        <Post
-          post={props.posts.find(item => item.id === props.currentPost)}
-          onEditPost={props.onEditPost}
-        />
+          <Feed posts={props.posts} />
       );
     case EDIT_POST:
       return (
@@ -31,3 +29,4 @@ const PostContainer = props => {
   }
 };
 export default PostContainer;
+

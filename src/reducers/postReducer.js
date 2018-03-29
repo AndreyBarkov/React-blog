@@ -18,7 +18,7 @@ function postReducer(state = {}, action) {
     case EDIT_POST:
       return Object.assign({}, state, {
         postState: EDIT_POST,
-        currentPost:action.id
+        currentPost: action.id
       });
     case EXISTING_POST:
       return Object.assign({}, state, {
@@ -43,12 +43,19 @@ function postReducer(state = {}, action) {
 function addNewPost(state, { post }) {
   let updatedPosts = state.posts;
   post.id = updatedPosts.length > 0 ? updatedPosts[0].id + 1 : 0;
-  post.datePosted = new Date().toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', date:'numeric', month:'short', year:'numeric', hour12: true });
+  post.datePosted = new Date().toLocaleString("en-US", {
+    hour: "numeric",
+    minute: "numeric",
+    date: "numeric",
+    month: "short",
+    year: "numeric",
+    hour12: true
+  });
   updatedPosts.unshift(post);
   return Object.assign({}, state, {
     posts: updatedPosts,
     postState: EXISTING_POST,
-    numberOfPosts:state.numberOfPosts+1,
+    numberOfPosts: state.numberOfPosts + 1
   });
 }
 
@@ -62,7 +69,6 @@ function updatePost(state, action) {
   });
 }
 function deletePost(state, action) {
-
   let updatedPosts = state.posts;
 
   let postToDelete = updatedPosts.findIndex(post => post.id === action.id);
@@ -70,7 +76,10 @@ function deletePost(state, action) {
   updatedPosts.splice(postToDelete, 1);
   console.log("DELETED");
   console.log(updatedPosts);
-  return {...state, posts:updatedPosts, numberOfPosts:state.numberOfPosts-1}
-
+  return {
+    ...state,
+    posts: updatedPosts,
+    numberOfPosts: state.numberOfPosts - 1
+  };
 }
 export default postReducer;

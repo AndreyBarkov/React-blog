@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { addPost, updatePost } from "../actions/actions";
+import {updatePost } from "../actions/actions";
 import PropTypes from "prop-types";
 
 const UpdatePost = props => {

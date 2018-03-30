@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import List from "./List";
 import PostContainer from "./PostContainer";
 import * as postActions from "../actions/actions";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import logo from "../assets/logo-og.png";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 class Blog extends Component {
-   selectPost = id => {
+  selectPost = id => {
     this.props.postActions.selectPost(id);
   };
   createNewPost = () => {
@@ -20,21 +20,15 @@ class Blog extends Component {
     return (
       <div>
         <div className="blog-header">
-          <img alt="logo" src={logo} />
-          <div
-            className="button create-post"
-            onClick={() => this.props.postActions.newPost()}
-          >
-            CREATE POST
+          <a href="/">
+    
+            <img alt="logo" src={logo} />
+          </a>
+          <div className="button create-post">
+            <a href="/new">CREATE POST</a>
           </div>
         </div>
-
-        <PostContainer {...this.props} onEditPost={this.editPost} />
-
-        <List
-          posts={this.props.posts}
-          OnClick={this.selectPost}
-        />
+        <PostContainer {...this.props} />
       </div>
     );
   }
@@ -43,7 +37,7 @@ function mapStateToProps(state) {
   return {
     posts: state.posts,
     postState: state.postState,
-    numberOfPosts: state.numberOfPosts,
+    numberOfPosts: state.numberOfPosts
   };
 }
 function mapDispatchToProps(dispatch) {

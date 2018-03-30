@@ -2,11 +2,13 @@ import React from "react";
 import { connect } from "react-redux";
 import { addPost} from "../actions/actions";
 import PropTypes from "prop-types";
+import { withRouter } from 'react-router-dom'
 
-const NewPost = props => {
+const NewPost = withRouter((props) => {
      const addNewPost = (e) => {
       let newPost = { title: this.title.value, text: this.text.value };
       props.addPost(newPost);
+      props.history.push('/');
     };
     return (
       <div className="post">
@@ -40,7 +42,7 @@ const NewPost = props => {
       </div>
     );
   
-};
+});
 NewPost.propTypes = {
   post: PropTypes.shape({
     id: PropTypes.number,

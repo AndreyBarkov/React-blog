@@ -2,15 +2,19 @@ import React from "react";
 import { connect } from "react-redux";
 import {updatePost } from "../actions/actions";
 import PropTypes from "prop-types";
+import { withRouter } from 'react-router-dom'
 
-const UpdatePost = props => {
+
+const UpdatePost = withRouter((props) => {
   const updatePost = () => {
     props.updatePost({
       id: props.post.id,
       title: this.title.value,
       text: this.text.value,
       datePosted: props.post.datePosted
-    });
+    }); 
+   // context.history.push("/");
+   props.history.push('/');
   };
   return (
     <div className="post">
@@ -45,7 +49,7 @@ const UpdatePost = props => {
       </form>
     </div>
   );
-};
+});
 UpdatePost.propTypes = {
   post: PropTypes.shape({
     id: PropTypes.number.isRequired,

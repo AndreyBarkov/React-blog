@@ -2,9 +2,10 @@ import React from "react";
 import { editPost, newPost, deletePost } from "../actions/actions";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 
-const Post = props => {
+const Post =(props, {match}) => {
   const deletePostWithConfirmation = id => {
     if (window.confirm("Are you sure to delete this post?")) {
       props.deletePost(id);
@@ -21,10 +22,10 @@ const Post = props => {
         />
         <div className="post-bottom">
         <div  className="date-posted">Posted on: {props.post.datePosted}</div>
-        <div  className="button edit-post" onClick={() => props.editPost(props.post.id)}>
+        <Link className="button edit-post" to={`edit/${props.post.id}`}>
           EDIT
-        </div>
-        <div
+        </Link>
+         <div
           
           className="button delete-post"
           onClick={() => deletePostWithConfirmation(props.post.id)}

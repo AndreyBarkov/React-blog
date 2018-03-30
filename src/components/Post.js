@@ -2,7 +2,7 @@ import React from "react";
 import { editPost, newPost, deletePost } from "../actions/actions";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 const Post =(props, {match}) => {
@@ -22,9 +22,9 @@ const Post =(props, {match}) => {
         />
         <div className="post-bottom">
         <div  className="date-posted">Posted on: {props.post.datePosted}</div>
-        <Link className="button edit-post" to={`edit/${props.post.id}`}>
+        <a className="button edit-post" onClick={ () => window.location.href = window.location.origin + `/edit/${props.post.id}`}>
           EDIT
-        </Link>
+        </a>
          <div
           
           className="button delete-post"

@@ -4,7 +4,6 @@ import * as postActions from "../actions/actions";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import logo from "../assets/logo-og.png";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 class Blog extends Component {
   selectPost = id => {

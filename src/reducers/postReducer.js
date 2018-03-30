@@ -1,34 +1,11 @@
 import {
-  NEW_POST,
-  EXISTING_POST,
-  EDIT_POST,
-  SELECT_POST,
   ADD_POST,
   UPDATE_POST,
   DELETE_POST
 } from "../actions/actionTypes";
-import UpdatePost from "../components/UpdatePost";
 
 function postReducer(state = {}, action) {
   switch (action.type) {
-    case NEW_POST:
-      return Object.assign({}, state, {
-        postState: NEW_POST
-      });
-    case EDIT_POST:
-      return Object.assign({}, state, {
-        postState: EDIT_POST,
-        currentPost: action.id
-      });
-    case EXISTING_POST:
-      return Object.assign({}, state, {
-        postState: EXISTING_POST
-      });
-    case SELECT_POST:
-      return Object.assign({}, state, {
-        currentPost: action.id,
-        postState: EXISTING_POST
-      });
     case ADD_POST:
       return addNewPost(state, action);
     case UPDATE_POST:
@@ -54,7 +31,6 @@ function addNewPost(state, { post }) {
   updatedPosts.unshift(post);
   return Object.assign({}, state, {
     posts: updatedPosts,
-    postState: EXISTING_POST,
     numberOfPosts: state.numberOfPosts + 1
   });
 }
@@ -65,7 +41,6 @@ function updatePost(state, action) {
   updatedPosts.splice(postIndex, 1, action.post);
   return Object.assign({}, state, {
     posts: updatedPosts,
-    postState: EXISTING_POST
   });
 }
 function deletePost(state, action) {

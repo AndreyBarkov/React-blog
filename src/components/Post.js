@@ -1,9 +1,8 @@
 import React from "react";
-import { editPost, newPost, deletePost } from "../actions/actions";
+import { deletePost } from "../actions/actions";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
-
+import {Link} from 'react-router-dom';
 
 const Post =(props, {match}) => {
   const deletePostWithConfirmation = id => {
@@ -22,9 +21,9 @@ const Post =(props, {match}) => {
         />
         <div className="post-bottom">
         <div  className="date-posted">Posted on: {props.post.datePosted}</div>
-        <a className="button edit-post" onClick={ () => window.location.href = window.location.origin + `/edit/${props.post.id}`}>
+        <Link className="button edit-post" to = {`/edit/${props.post.id}`}>
           EDIT
-        </a>
+        </Link>
          <div
           
           className="button delete-post"
@@ -37,8 +36,6 @@ const Post =(props, {match}) => {
     );
 };
 Post.propTypes = {
-  editPost: PropTypes.func.isRequired,
-  newPost: PropTypes.func.isRequired,
   deletePost: PropTypes.func.isRequired,
   post: PropTypes.shape({
     id: PropTypes.number,
@@ -56,8 +53,6 @@ Post.defaultProps = {
 }
 function mapDispatchToProps(dispatch) {
   return {
-    editPost: id => dispatch(editPost(id)),
-    newPost: () => dispatch(newPost()),
     deletePost: id => dispatch(deletePost(id))
   };
 }

@@ -1,30 +1,26 @@
-import {
-  ADD_POST,
-  UPDATE_POST,
-  DELETE_POST
-} from "../actions/actionTypes";
+import { ADD_POST, UPDATE_POST, DELETE_POST } from "../actions/actionTypes";
 
 let date = new Date();
-  date = date.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', date:'numeric', month:'short', year:'numeric', hour12: true });
-  const initialState = {
-    posts: [
-      {
-        id: 1,
-        title: "Sample Post 2",
-        text: "Starting having fun with the feed<br/> ",
-        datePosted: date
-      },
-      {
-        id: 0,
-        title: "Welcome to your Blog",
-        text: "This is a React-powered blog <br/> <img src='https://image.slidesharecdn.com/presentation-150508185029-lva1-app6891/95/reactjs-beyond-the-browser-50-638.jpg?cb=1431111589'/>",
-        datePosted: date
-      }
-    ],
-    numberOfPosts: 2,
-
-  };
-
+date = date.toLocaleString("en-US", {
+  hour: "numeric",
+  minute: "numeric",
+  date: "numeric",
+  month: "short",
+  year: "numeric",
+  hour12: true
+});
+export const initialState = {
+  posts: [
+    {
+      id: 0,
+      title: "Welcome to your Blog",
+      text:
+        "This is a React-powered blog <br/> <img src='https://image.slidesharecdn.com/presentation-150508185029-lva1-app6891/95/reactjs-beyond-the-browser-50-638.jpg?cb=1431111589'/>",
+      datePosted: "22-09-1994"
+    }
+  ],
+  numberOfPosts: 1
+};
 
 function postReducer(state = initialState, action) {
   switch (action.type) {
@@ -62,7 +58,7 @@ function updatePost(state, action) {
   let postIndex = updatedPosts.findIndex(item => item.id === action.post.id);
   updatedPosts.splice(postIndex, 1, action.post);
   return Object.assign({}, state, {
-    posts: updatedPosts,
+    posts: updatedPosts
   });
 }
 function deletePost(state, action) {

@@ -13,7 +13,6 @@ const UpdatePost = withRouter((props) => {
       text: this.text.value,
       datePosted: props.post.datePosted
     }); 
-   // context.history.push("/");
    props.history.push('/');
   };
   return (

@@ -35,7 +35,7 @@ const PostContainer = props => {
             />
           )}
         />
-        <List posts={props.posts} OnClick={this.selectPost} />
+        <List posts={props.posts}  />
       </div>
     </Router>
   );

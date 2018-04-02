@@ -6,9 +6,7 @@ import { bindActionCreators } from "redux";
 import logo from "../assets/logo-og.png";
 
 class Blog extends Component {
-  selectPost = id => {
-    this.props.postActions.selectPost(id);
-  };
+ 
   createNewPost = () => {
     this.props.postActions.newPost();
   };

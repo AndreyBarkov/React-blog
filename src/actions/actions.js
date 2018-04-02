@@ -1,21 +1,6 @@
 import * as types from "./actionTypes";
 
-export function newPost() {
-  return {
-    type: types.NEW_POST
-  };
-}
-export function editPost(id) {
-  return {
-    type: types.EDIT_POST,
-    id
-  };
-}
-export function existingPost() {
-  return {
-    type: types.EXISTING_POST
-  };
-}
+
 export function addPost(post) {
   return {
     type: types.ADD_POST,
@@ -34,9 +19,4 @@ export function updatePost(post) {
     post
   };
 }
-export function selectPost(id) {
-  return {
-    type: types.SELECT_POST,
-    id
-  };
-}
+

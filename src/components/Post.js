@@ -5,13 +5,6 @@ import PropTypes from "prop-types";
 import {Link} from 'react-router-dom';
 
 const Post =(props, {match}) => {
-  const deletePostWithConfirmation = id => {
-    if (window.confirm("Are you sure to delete this post?")) {
-      props.deletePost(id);
-    } else {
-      return;
-    }
-  };
     return (
       <div id={props.post.id} className="post">
         <h2 className="post-title">{props.post.title}</h2>
@@ -27,7 +20,7 @@ const Post =(props, {match}) => {
          <div
           
           className="button delete-post"
-          onClick={() => deletePostWithConfirmation(props.post.id)}
+          onClick={() =>  props.deletePost(props.post.id)}
         >
           DELETE
         </div>

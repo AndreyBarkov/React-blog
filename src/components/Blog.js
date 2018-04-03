@@ -6,7 +6,6 @@ import { bindActionCreators } from "redux";
 import logo from "../assets/logo-og.png";
 
 class Blog extends Component {
- 
   createNewPost = () => {
     this.props.postActions.newPost();
   };
@@ -17,13 +16,7 @@ class Blog extends Component {
     return (
       <div>
         <div className="blog-header">
-          <a href="/">
-    
-            <img alt="logo" src={logo} />
-          </a>
-          <div className="button create-post">
-            <a href="/new">CREATE POST</a>
-          </div>
+          <img alt="logo" src={logo} />
         </div>
         <PostContainer {...this.props} />
       </div>

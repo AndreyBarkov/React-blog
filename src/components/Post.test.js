@@ -4,6 +4,7 @@ import * as enzyme from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import configureStore from "redux-mock-store";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import renderer from "react-test-renderer";
 
 const mockPost = {
   id: 0,
@@ -27,7 +28,16 @@ describe("Post component", () => {
       </Router>
     );
   });
-
+  it("renders correctly", () => {
+    const tree = renderer
+      .create(
+        <Router>
+          <Post store={store} post={mockPost} />
+        </Router>
+      )
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
   it("should render without throwing an error when no posts", () => {
     let emptyStore = mockStore({});
     expect(
@@ -40,15 +50,14 @@ describe("Post component", () => {
         .find(".post")
     ).toHaveLength(1);
   });
-    it('should render post data', () => {
-        expect(wrapper.find('.post-title').text()).toEqual(mockPost.title)
-        expect(wrapper.find('.post-text').text()).toEqual(mockPost.text)   
-    });
-    it('should dispatch delete action on DELETE button click', () => {
-        wrapper.find('.delete-post').simulate('click');
-        expect(store.getActions()).toEqual( [ { type: 'DELETE_POST', id: 0 } ]);
-    });
+  it("should render post data", () => {
+    expect(wrapper.find(".post-title").text()).toEqual(mockPost.title);
+    expect(wrapper.find(".post-text").text()).toEqual(mockPost.text);
+  });
+  it("should dispatch delete action on DELETE button click", () => {
+    wrapper.find(".delete-post").simulate("click");
+    expect(store.getActions()).toEqual([{ type: "DELETE_POST", id: 0 }]);
+  });
 });
 
-//https://github.com/reactjs/redux/blob/master/docs/recipes/WritingTests.md
-// https://blog.theodo.fr/2017/04/enzyme-fast-and-simple-react-testing/
+

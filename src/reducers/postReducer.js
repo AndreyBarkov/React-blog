@@ -4,7 +4,7 @@ let date = new Date();
 date = date.toLocaleString("en-US", {
   hour: "numeric",
   minute: "numeric",
-  date: "numeric",
+  day: "numeric",
   month: "short",
   year: "numeric",
   hour12: true
@@ -16,7 +16,7 @@ export const initialState = {
       title: "Welcome to your Blog",
       text:
         "This is a React-powered blog <br/> <img src='https://image.slidesharecdn.com/presentation-150508185029-lva1-app6891/95/reactjs-beyond-the-browser-50-638.jpg?cb=1431111589'/>",
-      datePosted: "22-09-1994"
+      datePosted: date
     }
   ],
   numberOfPosts: 1
@@ -41,7 +41,7 @@ function addNewPost(state, { post }) {
   post.datePosted = new Date().toLocaleString("en-US", {
     hour: "numeric",
     minute: "numeric",
-    date: "numeric",
+    day: "numeric",
     month: "short",
     year: "numeric",
     hour12: true

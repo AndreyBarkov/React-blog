@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { BrowserRouter as  Route, Link } from "react-router-dom";
 
 
 const List = props => {
@@ -10,16 +11,16 @@ const List = props => {
   } else {
     list = props.posts.map((post) => (
       <li key={post.id}>
-     <a onClick={ () =>window.location.href = window.location.origin + `/post/${post.id}`}>
+     <Link to={`/post/${post.id}`}>
       {post.title}
-      </a>
+      </Link>
 
       </li>
     ));
   }
   return (
     <div className="post-list">
-     <a href="/"> All Posts </a>
+     <Link to={"/"}> All Posts </Link>
       <ul>{list}</ul>
     </div>
   );

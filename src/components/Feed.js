@@ -5,7 +5,7 @@ const Feed = (props) =>{
    const feed = props.posts.map(item =><Post key={item.id} post={item} />); 
    console.log();
    return(
-       <div>
+       <div id="feed">
            {feed}
        </div>
    );

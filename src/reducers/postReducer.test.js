@@ -43,7 +43,7 @@ describe("post reducer", () => {
           datePosted: new Date().toLocaleString("en-US", {
             hour: "numeric",
             minute: "numeric",
-            date: "numeric",
+            day: "numeric",
             month: "short",
             year: "numeric",
             hour12: true

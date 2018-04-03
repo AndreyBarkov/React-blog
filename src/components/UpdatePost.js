@@ -6,18 +6,20 @@ import { withRouter } from 'react-router-dom'
 
 
 const UpdatePost = withRouter((props) => {
+  let title = props.post.title;
+  let text = props.post.text;
   const updatePost = () => {
     props.updatePost({
       id: props.post.id,
-      title: this.title.value,
-      text: this.text.value,
+      title: title.value,
+      text: text.value,
       datePosted: props.post.datePosted
     }); 
    props.history.push('/');
   };
   return (
     <div className="post">
-      <form onSubmit={updatePost}>
+      <form id="updatePost" onSubmit={updatePost}>
         <input
           className="input-title"
           type="text"
@@ -25,7 +27,7 @@ const UpdatePost = withRouter((props) => {
           required
           defaultValue={props.post.title}
           ref={input => {
-            this.title = input;
+            title = input;
           }}
         />
         <br />
@@ -37,7 +39,7 @@ const UpdatePost = withRouter((props) => {
             placeholder="Post..."
             defaultValue={props.post.text}
             ref={input => {
-              this.text = input;
+              text = input;
             }}
           />
         </div>
